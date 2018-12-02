@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- height of a single list item -->
+    <dimen name="list_item_height">80dp</dimen>
+
+    <!-- common padding value in activity_main -->
+    <dimen name="padding_horizontal">16dp</dimen>
+    <dimen name="padding_vertical">8dp</dimen>
+</resources>

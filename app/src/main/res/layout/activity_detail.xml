@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/padding_horizontal">
+
+    <!-- Inputs-->
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8">
+
+        <!-- Name Category -->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/padding_vertical">
+
+            <!-- Label -->
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="@string/item_label_name"
+                style="@style/DetailText"/>
+
+            <!-- Name field -->
+            <EditText
+                android:id="@+id/edit_name"
+                android:layout_weight="2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:inputType="text"
+                android:hint="@string/hint_edit_name"/>
+
+        </LinearLayout>
+
+        <!-- Price Category -->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/padding_vertical">
+
+            <!-- Label -->
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="@string/item_label_price"
+                style="@style/DetailText"/>
+
+            <!-- Price field -->
+            <EditText
+                android:id="@+id/edit_price"
+                android:layout_weight="2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:inputType="number"
+                android:hint="@string/hint_edit_price"/>
+
+        </LinearLayout>
+
+        <!-- Quantity Category -->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/padding_horizontal">
+
+            <!-- Label -->
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="@string/item_label_quantity"
+                style="@style/DetailText"/>
+
+            <!-- Quantity field -->
+            <EditText
+                android:id="@+id/detail_quantity"
+                android:layout_weight="2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:inputType="number"
+                android:hint="@string/hint_edit_quantity"/>
+
+            <!-- Increment Button -->
+
+            <!-- Decrement Button -->
+
+        </LinearLayout>
+
+        <!-- Order Button -->
+        <Button
+            android:id="@+id/order_button"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="@string/button_label_order"/>
+
+    </LinearLayout>
+
+    <!-- TODO: replace button with menu options-->
+    <!-- Delete Button -->
+    <Button
+        android:id="@+id/delete_button"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="@string/button_label_delete"/>
+
+</LinearLayout>

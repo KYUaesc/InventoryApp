@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">InventoryApp</string>
+
+    <string name="sale_button">Sale</string>
+
+    <!--Label and Sample texts -->
+    <string name="item_label_name">Name:</string>
+    <string name="item_label_price">Price:</string>
+    <string name="item_label_quantity">Quantity:</string>
+    <string name="item_price_sample">$10</string>
+    <string name="item_quantity_sample">2</string>
+
+    <!--Label of buttons -->
+    <string name="button_label_order">Order From Supplier</string>
+
+    <!--text hints in detail activity -->
+    <string name="hint_edit_name">enter text</string>
+    <string name="hint_edit_price">enter price</string>
+    <string name="hint_edit_quantity">enter quantity</string>
+    <string name="button_label_delete">Delete this item</string>
+</resources>
