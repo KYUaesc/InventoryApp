@@ -1,8 +1,11 @@
-INVENTORY APPLICATION
---------------------------------------------------
-SPECIFICATIONS
---------------------------------------------------
+Inventory Application
+---
+This is a practice application for Udacity Nanodegree Program: Android Basics.
+
+Specifications
+---
 Overall: contains list of current produces and button to add new product
+
 + List Item Layout:
     - produce name
     - current quantity
@@ -12,9 +15,7 @@ Overall: contains list of current produces and button to add new product
 + Detail layout
     - display info stored in the database
     - button that increase/decrease quantity displayed
-    - button to order from supplier
-        - intent to phone or email app
-    - button to delete the produce record
-        - prompts for confirmation
+    - button to order from supplier (intent to phone or email app)
+    - button to delete the produce record (prompts for confirmation)
 + Default text view:
     - instructions on how to populate the database
