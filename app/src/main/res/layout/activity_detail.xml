@@ -5,114 +5,128 @@
     android:layout_height="match_parent"
     android:padding="@dimen/padding_horizontal">
 
-    <!-- Inputs-->
+    <!-- Name Category -->
     <LinearLayout
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="8">
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/padding_vertical">
 
-        <!-- Name Category -->
+        <!-- Label -->
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="@string/item_label_name"
+            style="@style/DetailText"/>
+
+        <!-- Name field -->
+        <EditText
+            android:id="@+id/edit_name"
+            android:layout_weight="2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:inputType="text"
+            android:hint="@string/hint_edit_name"/>
+
+    </LinearLayout>
+
+    <!-- Price Category -->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/padding_vertical">
+
+        <!-- Label -->
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="@string/item_label_price"
+            style="@style/DetailText"/>
+
         <LinearLayout
             android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="@dimen/padding_vertical">
+            android:layout_weight="2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
 
-            <!-- Label -->
             <TextView
-                android:layout_weight="1"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
-                android:text="@string/item_label_name"
-                style="@style/DetailText"/>
-
-            <!-- Name field -->
-            <EditText
-                android:id="@+id/edit_name"
-                android:layout_weight="2"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:inputType="text"
-                android:hint="@string/hint_edit_name"/>
-
-        </LinearLayout>
-
-        <!-- Price Category -->
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="@dimen/padding_vertical">
-
-            <!-- Label -->
-            <TextView
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:text="@string/item_label_price"
+                android:paddingStart="@dimen/padding_vertical"
+                android:paddingEnd="@dimen/padding_vertical"
+                android:text="@string/edit_price_sign"
                 style="@style/DetailText"/>
 
             <!-- Price field -->
             <EditText
                 android:id="@+id/edit_price"
-                android:layout_weight="2"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:inputType="number"
                 android:hint="@string/hint_edit_price"/>
 
         </LinearLayout>
 
-        <!-- Quantity Category -->
+    </LinearLayout>
+
+    <!-- Quantity Category -->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/padding_horizontal">
+
+        <!-- Label -->
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="@string/item_label_quantity"
+            style="@style/DetailText"/>
+
         <LinearLayout
             android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="@dimen/padding_horizontal">
-
-            <!-- Label -->
-            <TextView
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:text="@string/item_label_quantity"
-                style="@style/DetailText"/>
+            android:layout_weight="2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
 
             <!-- Quantity field -->
             <EditText
-                android:id="@+id/detail_quantity"
-                android:layout_weight="2"
-                android:layout_width="0dp"
+                android:id="@+id/edit_quantity"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:inputType="number"
                 android:hint="@string/hint_edit_quantity"/>
 
-            <!-- Increment Button -->
-
             <!-- Decrement Button -->
+            <Button
+                android:id="@+id/button_decrease"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:text="@string/button_decrease"/>
 
+            <!-- Increment Button -->
+            <Button
+                android:id="@+id/button_increase"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:text="@string/button_increase"/>
         </LinearLayout>
-
-        <!-- Order Button -->
-        <Button
-            android:id="@+id/order_button"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:text="@string/button_label_order"/>
 
     </LinearLayout>
 
-    <!-- TODO: replace button with menu options-->
-    <!-- Delete Button -->
+    <!-- Order Button -->
     <Button
-        android:id="@+id/delete_button"
+        android:id="@+id/order_button"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:text="@string/button_label_delete"/>
+        android:layout_height="60dp"
+        android:text="@string/button_label_order"/>
 
 </LinearLayout>

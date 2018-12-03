@@ -8,6 +8,8 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!-- TODO: polish the text style later-->
+
     <!-- Text style of single list item -->
     <style name="ListItemText">
         <item name="android:fontFamily">sans-serif-medium</item>
