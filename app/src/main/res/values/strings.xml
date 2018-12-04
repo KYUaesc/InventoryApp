@@ -46,6 +46,7 @@
     <string name="editor_save_successful">Saved! </string>
     <string name="editor_no_field">Need to fill all fields</string>
     <string name="editor_no_negative">Price or Quantity can no\'t be negative</string>
+    <string name="editor_sale_negative">Quantity is zero, need to order more supply</string>
     <string name="editor_number_too_large">Number can\'t exceed 999,999,999</string>
 
     <!-- Dialog message when user is leaving editor but hasn't saved changes [CHAR LIMIT=NONE] -->

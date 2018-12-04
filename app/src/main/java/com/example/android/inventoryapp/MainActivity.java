@@ -27,7 +27,7 @@ import com.example.android.inventoryapp.data.InventoryContract.InventoryEntry;
 
 import java.util.concurrent.atomic.LongAccumulator;
 
-public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
+public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor>, InventoryCursorAdapter.OnSaleClickListener {
 
     // Log Tag
     public static final String LOG_TAG = MainActivity.class.getName();
@@ -174,4 +174,39 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     }
 
+    /**
+     * // Define the behavior for onUpdateSale
+     */
+    public void onUpdateSale(int quantity, long id){
+        // decrement quantity if it is larger than zero
+        if(quantity > 0){
+
+            // decrease quantity
+            quantity--;
+
+            // Create a new map of values, where column names are the keys
+            ContentValues values = new ContentValues();
+            values.put(InventoryEntry.COLUMN_INVENTORY_QTY,quantity);
+
+            // create uri for single item using give row id
+            Uri uri = ContentUris.withAppendedId(InventoryEntry.CONTENT_URI,id);
+
+            // update entry,  returning the content URI
+            int rowsAffected = getContentResolver().update(uri, values, null, null);
+
+            // show toast message depending on whether the insertion was successful
+            if (rowsAffected == 0) {
+                // If the new content URI is null, then there was an error
+                Toast.makeText(this, R.string.editor_sale_failed, Toast.LENGTH_SHORT).show();
+            } else {
+                // Otherwise, the update was successful and we can display a toast.
+                Toast.makeText(this, R.string.editor_sale_successful, Toast.LENGTH_SHORT).show();
+            }
+
+        }else{
+            // Toast message to indicate the quantity can not be decreased
+            Toast.makeText(this, R.string.editor_sale_negative, Toast.LENGTH_SHORT).show();
+        }
+
+    }
 }
