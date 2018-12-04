@@ -10,18 +10,32 @@
 
     <!-- TODO: polish the text style later-->
 
+    <!-- Text style of item title -->
+    <style name="itemTitle">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@color/itemTitleColor</item>
+        <item name="android:textStyle">italic</item>
+        <item name="android:textSize">22sp</item>
+    </style>
+
     <!-- Text style of single list item -->
     <style name="ListItemText">
         <item name="android:fontFamily">sans-serif-medium</item>
         <item name="android:textColor">@color/colorPrimary</item>
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="ListItemPriceText">
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textColor">@color/itemPriceColor</item>
+        <item name="android:textSize">18sp</item>
     </style>
 
     <!-- Text style of text in Detail Activity -->
     <style name="DetailText">
         <item name="android:fontFamily">sans-serif-medium</item>
         <item name="android:textColor">@color/colorPrimary</item>
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">20sp</item>
     </style>
 
 </resources>

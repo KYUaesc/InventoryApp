@@ -12,7 +12,6 @@
     <string name="item_quantity_sample">2</string>
 
 
-    <!-- Detail Activity -->
     <!-- Text Hints-->
     <string name="hint_edit_name">Enter name</string>
     <string name="hint_edit_price">Enter price</string>
@@ -33,9 +32,10 @@
     <!-- Menu Action texts -->
     <string name="action_save">Save</string>
     <string name="action_delete">Delete</string>
-
+    <string name="action_delete_all">Delete All</string>
     <!-- dialog message -->
     <string name="delete_dialog_msg">Delete this inventory?</string>
+    <string name="delete_all_dialog_msg">Delete all inventory?</string>
     <string name="delete">Delete</string>
     <string name="cancel">Cancel</string>
 
@@ -46,6 +46,7 @@
     <string name="editor_save_successful">Saved! </string>
     <string name="editor_no_field">Need to fill all fields</string>
     <string name="editor_no_negative">Price or Quantity can no\'t be negative</string>
+    <string name="editor_number_too_large">Number can\'t exceed 999,999,999</string>
 
     <!-- Dialog message when user is leaving editor but hasn't saved changes [CHAR LIMIT=NONE] -->
     <string name="unsaved_changes_dialog_msg">Discard your changes and quit editing?</string>
@@ -53,6 +54,11 @@
     <string name="discard">Discard</string>
     <!-- Dialog button text for the option to keep editing the current pet [CHAR LIMIT=20] -->
     <string name="keep_editing">Keep Editing</string>
+    <string name="inventory_title">Inventory Title</string>
+    <string name="quantity_title">Quantity</string>
+    <string name="empty_view_title_text">Click button on the right bottom corner to start!</string>
+    <string name="editor_sale_failed">Sale button failed</string>
+    <string name="editor_sale_successful">Sell 1 item!</string>
 
 
 </resources>

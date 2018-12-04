@@ -1,8 +1,11 @@
 package com.example.android.inventoryapp;
 
+import android.app.AlertDialog;
 import android.app.LoaderManager;
 import android.content.ContentUris;
+import android.content.ContentValues;
 import android.content.CursorLoader;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
@@ -11,8 +14,12 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.CursorAdapter;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -47,10 +54,12 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             }
         });
 
-        // TODO: find and setup empty TextView with instructions on how to populate database
+        // find and setup empty TextView
+        View emptyView = findViewById(R.id.empty_view);
 
         // Find the ListView that populates the inventory data
         ListView listView = findViewById(R.id.list_view);
+        listView.setEmptyView(emptyView);
 
         // setup adapter for list view
         mAdapter = new InventoryCursorAdapter(this,null);
@@ -68,6 +77,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                 startActivity(intent);
             }
         });
+
 
         // Prepare the loader: either re-connect with exist. one or start a new one
         getLoaderManager().initLoader(INVENTORY_LOADER,null,this);
@@ -104,4 +114,64 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         // make sure no longer using it
         mAdapter.swapCursor(null);
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.action_delete_all:
+                // pop up the confirmation dialog for deletion
+                showDeleteConfirmationDialog();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void showDeleteConfirmationDialog() {
+        // Create an AlertDialog.Builder and set the message, and click listeners
+        // for the positive and negative buttons on the dialog.
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(R.string.delete_all_dialog_msg);
+        builder.setPositiveButton(R.string.delete, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+
+                deleteAll();
+            }
+        });
+        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                // User clicked the "Cancel" button, so dismiss the dialog
+                // and continue editing the pet.
+                if (dialog != null) {
+                    dialog.dismiss();
+                }
+            }
+        });
+
+        // Create and show the AlertDialog
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
+
+    /**
+     * Perform the deletion in the database.
+     */
+    private void deleteAll() {
+        // Call the ContentResolver to delete the entry  at the given content URI.
+        int rowsDeleted = getContentResolver().delete(InventoryEntry.CONTENT_URI, null, null);
+
+        // show toast message depending on whether the deletion was successful
+        if (rowsDeleted == 0) {
+            Toast.makeText(this, R.string.editor_delete_failed, Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, R.string.editor_delete_successful, Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
 }

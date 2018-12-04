@@ -2,7 +2,7 @@
 <resources>
 
     <!-- height of a single list item -->
-    <dimen name="list_item_height">80dp</dimen>
+    <dimen name="list_item_height">88dp</dimen>
 
     <!-- common padding value in activity_main -->
     <dimen name="padding_horizontal">16dp</dimen>

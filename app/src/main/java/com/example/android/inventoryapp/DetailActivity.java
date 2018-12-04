@@ -14,6 +14,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -71,6 +72,9 @@ public class DetailActivity extends AppCompatActivity implements LoaderManager.L
     // Button to order from supplier
     private Button mOrderButton;
 
+    // hold current quantity
+    private long mQty = 0;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -97,7 +101,6 @@ public class DetailActivity extends AppCompatActivity implements LoaderManager.L
         mPriceEditText = findViewById(R.id.edit_price);
         mQuantityEditText = findViewById(R.id.edit_quantity);
 
-
         // find buttons
         mDecrQtyButton = findViewById(R.id.button_decrease);
         mIncrQtyButton = findViewById(R.id.button_increase);
@@ -108,14 +111,44 @@ public class DetailActivity extends AppCompatActivity implements LoaderManager.L
         mPriceEditText.setOnTouchListener(mTouchListener);
         mQuantityEditText.setOnTouchListener(mTouchListener);
 
-        // TODO setup on click listener on buttons
-//        mIncrQtyButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//            }
-//        });
-//
+        // increase and update quantity when increase button is clicked
+        mIncrQtyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mQty++;
+                mQuantityEditText.setText(String.valueOf(mQty));
+            }
+        });
+
+        // decrease and update auantity when decrease button is clicked
+        mDecrQtyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(mQty > 0){
+                    mQty--;
+                    mQuantityEditText.setText(String.valueOf(mQty));
+                }
+                else{
+                    Toast.makeText(DetailActivity.this,R.string.editor_no_negative,Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        mOrderButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //implicit intent to email
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.setType("*/*");
+                if (sendIntent.resolveActivity(getPackageManager()) != null) {
+                    startActivity(sendIntent);
+                }
+
+            }
+        });
+
         // Initialize a loader to read the inventor  data from the database
         // and display the current values in the editor
         getLoaderManager().initLoader(EXISTING_LOADER,null,this);
@@ -147,13 +180,18 @@ public class DetailActivity extends AppCompatActivity implements LoaderManager.L
             return;
         }
 
-        // parse price and qty into integers
-        int price = Integer.parseInt(priceString);
-        int qty = Integer.parseInt(qtyString);
+        // parse price into integers
+        long price = Long.parseLong(priceString);
+        long qty =  Long.parseLong(qtyString);
 
         // validates price and qty
         if(qty < 0 || price < 0){
             Toast.makeText(this,R.string.editor_no_negative,Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if(qty > 999999999 || price > 999999999){
+            Toast.makeText(this,R.string.editor_number_too_large,Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -216,7 +254,6 @@ public class DetailActivity extends AppCompatActivity implements LoaderManager.L
         }
         return true;
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -363,6 +400,9 @@ public class DetailActivity extends AppCompatActivity implements LoaderManager.L
             String name = data.getString(data.getColumnIndexOrThrow(InventoryEntry.COLUMN_INVENTORY_NAME));
             String price = data.getString(data.getColumnIndexOrThrow(InventoryEntry.COLUMN_INVENTORY_PRICE));
             String qty = data.getString(data.getColumnIndexOrThrow(InventoryEntry.COLUMN_INVENTORY_QTY));
+
+            // updates quantity
+            mQty = Long.parseLong(qty);
 
             // Update the views on the screen with the values from the database
             mNameEditText.setText(name);
